@@ -11,20 +11,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build --file Dockerfile -t kantsuw/myapp:latest
+      run: docker build --file Dockerfile -t kantsuw/myapp:latest .
   list-images:
     runs-on: self-hosted
     steps:
     - name: List images
       run: docker images
-  login:
+  push:
     runs-on: self-hosted
     steps:
     - name: login 
       run: docker login -u kantsuw -p dckr_pat_xvedQKPtLqLWlLU_u7y4Wlkko5A
-  push:
-    runs-on: self-hosted
-    steps:
     - name: push docker 
       run: docker push kantsuw/myapp:latest
 
